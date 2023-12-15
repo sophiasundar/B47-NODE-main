@@ -222,14 +222,14 @@ const client = await createConnection()
             res.send(filteredProducts)
         })
 
-            app.get('/products/:id',(req, res)=> {  
+            app.get('/products/:id', async(req, res)=> {  
                 const { id } = req.params;
                 console.log(req.params, "ID=", id);
                 // db.products.findOne({id:"1"})
                 // const product = products.find((pd)=> pd.id == id)[0];
-                const product =  client.
+                const product = await client.db("items").collection("products").findOne({id: "8"})
                 res.send(product)
-            });
+            }); 
              
   
 app.listen(PORT, ()=> 
