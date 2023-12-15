@@ -185,8 +185,10 @@ const products = [
 // Mongodb Connection
 const MONGO_URL = "mongodb://localhost";
 
-function createConnection(){
-    const client = new MongoClient(MONGO_URL)
+async function createConnection(){
+    const client = new MongoClient(MONGO_URL);
+    await client.connect();
+    return client; 
 }
 
 
